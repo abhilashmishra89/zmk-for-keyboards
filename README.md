@@ -19,6 +19,7 @@ The SVG updates automatically on push via the [Draw Keymap](.github/workflows/dr
 
 - **Left (central):** Built-in ZMK status screen (layer, battery, BT)
 - **Right (peripheral):** Custom P keycap logo with glitch effects + battery + BT status
+- **Screens on/off:** LOWER + RAISE + H. After turning back on, a screen may stay black until that half is switched off and on.
 
 ## Build Firmware
 
@@ -34,12 +35,21 @@ make install   # one-time: pip install keymap-drawer
 make svg       # parse + render SVG
 ```
 
+## Regenerate the PDF cheat sheet
+
+Edit the layer tables in [`scripts/make_guide.py`](scripts/make_guide.py) to match the keymap, then:
+
+```sh
+pip install reportlab
+python3 scripts/make_guide.py corne-quick-guide.pdf
+```
+
 ## Hardware
 
 - **Board:** Nice!Nano v2 (nRF52840)
 - **Shield:** Corne (split, 6x3+3)
 - **Display:** OLED SSD1306 128x32 / Nice!View
-- **RGB:** 27 WS2812 LEDs
+- **RGB:** firmware supports 27 WS2812 LEDs, but none are fitted on this board
 - **Bluetooth:** 4 profiles
 - **ZMK Studio:** Enabled
-- **Mouse/Pointing:** Enabled
+- **Mouse/Pointing:** enabled in firmware, no mouse keys in the keymap
