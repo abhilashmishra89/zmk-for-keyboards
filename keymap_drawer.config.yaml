@@ -1,0 +1,12 @@
+# keymap-drawer config: friendlier Mac labels in corne_keymap.svg
+parse_config:
+  raw_binding_map:
+    "&kp LALT": Opt
+    "&kp LGUI": Cmd
+    "&bootloader": Boot
+    # show the Shift symbol on keys that have one
+    "&kp SEMI": {t: ";", shifted: ":"}
+    "&kp SQT": {t: "'", shifted: '"'}
+    "&kp COMMA": {t: ",", shifted: "<"}
+    "&kp DOT": {t: ".", shifted: ">"}
+    "&kp FSLH": {t: "/", shifted: "?"}
