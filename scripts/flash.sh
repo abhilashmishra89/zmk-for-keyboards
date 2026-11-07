@@ -2,12 +2,15 @@
 # Wait for a firmware build, download it, then flash halves as they appear
 # in bootloader mode (the NICENANO drive).
 #
-# Usage: scripts/flash.sh <run-id> left|both
-#   left - keymap-only changes (the keymap lives on the left/central half)
-#   both - changes that affect each half (displays, power, etc.); left first, then right
+# Usage: scripts/flash.sh <run-id> left|both|reset-both
+#   left       - keymap-only changes (the keymap lives on the left/central half)
+#   both       - changes that affect each half (displays, power, etc.); left first, then right
+#   reset-both - clear saved settings (incl. Bluetooth pairing) and reflash:
+#                left settings_reset, left firmware, right settings_reset, right firmware.
+#                Each step needs its own reset double-tap.
 
 set -u
-RUN="${1:?usage: scripts/flash.sh <run-id> left|both}"
+RUN="${1:?usage: scripts/flash.sh <run-id> left|both|reset-both}"
 WHICH="${2:-left}"
 REPO=abhilashmishra89/zmk-for-keyboards
 DIR="$HOME/Downloads/corne-firmware-$RUN"
@@ -40,6 +43,13 @@ flash() {
     return 1
 }
 
-flash corne_left || exit 1
-[ "$WHICH" = both ] && { flash corne_right || exit 1; }
-exit 0
+case "$WHICH" in
+    left) flash corne_left ;;
+    both) flash corne_left && flash corne_right ;;
+    reset-both)
+        flash settings_reset && echo ">>> LEFT: double-tap reset again for the firmware" &&
+        flash corne_left && echo ">>> unplug LEFT, plug in RIGHT, double-tap reset" &&
+        flash settings_reset && echo ">>> RIGHT: double-tap reset again for the firmware" &&
+        flash corne_right ;;
+    *) echo "unknown mode: $WHICH"; exit 1 ;;
+esac

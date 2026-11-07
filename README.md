@@ -4,7 +4,7 @@ Keyboard and original firmware config by [PARIX](https://parix.in/products/corne
 
 Split ergonomic keyboard (42 keys) running [ZMK firmware](https://zmk.dev) on Nice!Nano v2.
 Simple Mac laptop-style layout: plain QWERTY, dedicated Cmd/Opt/Ctrl/Shift, and three extra layers
-(LOWER: F-keys/arrows/media, RAISE: numbers/symbols, LOWER+RAISE: Bluetooth/screen on-off/Boot).
+(LOWER: F-keys/arrows/media, RAISE: numbers/symbols, LOWER+RAISE: Bluetooth/Boot).
 Printable cheat sheet: [`corne-quick-guide.pdf`](corne-quick-guide.pdf); one-page A4 print of BASE/RAISE/LOWER: [`corne-print-a4.pdf`](corne-print-a4.pdf).
 
 ## Keymap
@@ -19,7 +19,7 @@ The SVG updates automatically on push via the [Draw Keymap](.github/workflows/dr
 
 - **Left (central):** Built-in ZMK status screen (layer, battery, BT)
 - **Right (peripheral):** Custom P keycap logo with glitch effects + battery + BT status
-- **Screens off / on:** LOWER + RAISE + H turns them off, + J turns them on. After turning back on, a screen may stay black until that half is switched off and on.
+- Screens blank by themselves when the keyboard is idle. There is deliberately no screen on/off key: cutting screen power (`&ext_power`) left the screens stuck off on this board.
 
 ## Build Firmware
 
