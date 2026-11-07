@@ -5,7 +5,7 @@ Keyboard and original firmware config by [PARIX](https://parix.in/products/corne
 Split ergonomic keyboard (42 keys) running [ZMK firmware](https://zmk.dev) on Nice!Nano v2.
 Simple Mac laptop-style layout: plain QWERTY, dedicated Cmd/Opt/Ctrl/Shift, and three extra layers
 (LOWER: F-keys/arrows/media, RAISE: numbers/symbols, LOWER+RAISE: Bluetooth/screen on-off/Boot).
-Printable cheat sheet: [`corne-quick-guide.pdf`](corne-quick-guide.pdf).
+Printable cheat sheet: [`corne-quick-guide.pdf`](corne-quick-guide.pdf); one-page A4 print of BASE/RAISE/LOWER: [`corne-print-a4.pdf`](corne-print-a4.pdf).
 
 ## Keymap
 

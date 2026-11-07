@@ -3,7 +3,6 @@ from reportlab.lib.pagesizes import letter, landscape
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor, white
 
-OUT = sys.argv[1]
 W, H = landscape(letter)
 
 INK = HexColor("#1f2933")
@@ -158,10 +157,11 @@ def page_usage(c):
     c.drawString(36, y, "Key-by-key pictures of every layer are on the next page.")
 
 
-c = canvas.Canvas(OUT, pagesize=landscape(letter))
-c.setTitle("Corne Quick Guide")
-page_usage(c)
-c.showPage()
-page_keys(c)
-c.showPage()
-c.save()
+if __name__ == "__main__":
+    c = canvas.Canvas(sys.argv[1], pagesize=landscape(letter))
+    c.setTitle("Corne Quick Guide")
+    page_usage(c)
+    c.showPage()
+    page_keys(c)
+    c.showPage()
+    c.save()

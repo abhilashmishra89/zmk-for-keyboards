@@ -35,7 +35,7 @@ Run `git pull --rebase` first: a bot pushes a redrawn picture after every keymap
 ## 2. Edit, in this order
 
 1. `config/corne.keymap`: the bindings, plus the layer summary comment at the top if a layer's purpose changes.
-2. `scripts/make_guide.py`: the `LAYERS` tables (page 2, key grids) and the `page_usage` text (page 1). Both must match the keymap.
+2. `scripts/make_guide.py`: the `LAYERS` tables (page 2, key grids) and the `page_usage` text (page 1). Both must match the keymap. `scripts/make_print.py` (the one-page A4 print of BASE/RAISE/LOWER) reuses these tables, so it needs no edits.
 3. `keymap_drawer.config.yaml`: only if a new binding needs a friendlier label (e.g. `"&ext_power EP_TOG": Screen`).
 4. `README.md`: the one-line layer summary near the top, if a layer's purpose changed.
 
@@ -43,20 +43,21 @@ Run `git pull --rebase` first: a bot pushes a redrawn picture after every keymap
 
 ```sh
 .venv/bin/python -I scripts/make_guide.py corne-quick-guide.pdf
+.venv/bin/python -I scripts/make_print.py corne-print-a4.pdf
 .venv/bin/keymap -c keymap_drawer.config.yaml parse -z config/corne.keymap > .venv/corne.yaml
 .venv/bin/keymap -c keymap_drawer.config.yaml draw .venv/corne.yaml > corne_keymap.svg
 mkdir -p .venv/preview
 .venv/bin/python -I -c "from pypdf import PdfReader,PdfWriter;import sys;w=PdfWriter();w.add_page(PdfReader(sys.argv[1]).pages[1]);w.write(sys.argv[2])" corne-quick-guide.pdf .venv/preview/p2.pdf
-qlmanage -t -s 1400 -o .venv/preview .venv/preview/p2.pdf corne-quick-guide.pdf >/dev/null 2>&1
+qlmanage -t -s 1400 -o .venv/preview .venv/preview/p2.pdf corne-quick-guide.pdf corne-print-a4.pdf >/dev/null 2>&1
 ```
 
-Read both PNGs in `.venv/preview/` and confirm every changed key looks right. Check each layer has 42 keys (`.venv/corne.yaml`).
+Read the PNGs in `.venv/preview/` and confirm every changed key looks right. Check each layer has 42 keys (`.venv/corne.yaml`).
 
 ## 4. Publish
 
 ```sh
-cp corne-quick-guide.pdf ~/Desktop/corne-quick-guide.pdf
-git add -A config scripts keymap_drawer.config.yaml README.md corne_keymap.svg corne-quick-guide.pdf
+cp corne-quick-guide.pdf corne-print-a4.pdf ~/Desktop/
+git add -A config scripts keymap_drawer.config.yaml README.md corne_keymap.svg corne-quick-guide.pdf corne-print-a4.pdf
 git commit -m "feat: <what moved>"
 git push
 gh run list -R abhilashmishra89/zmk-for-keyboards --workflow "Build ZMK firmware" --limit 1
