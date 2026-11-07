@@ -38,7 +38,7 @@ LAYERS = [
     ]),
     ("ADJUST - hold LOWER + RAISE together", {"LOWER", "RAISE"}, [
         ["", "", "", "", "", "",                          "", "", "", "", "", ""],
-        ["BT 0", "BT 1", "BT 2", "BT 3", "BT clr", "",     "Screen", "", "", "", "", ""],
+        ["BT 0", "BT 1", "BT 2", "BT 3", "BT clr", "",     "Scrn off", "Scrn on", "", "", "", ""],
         ["USB/BT", "Boot", "", "", "", "",                "", "", "", "", "Boot", ""],
         ["Opt", "Cmd", "LOWER",                           "RAISE", "Space", "Enter"],
     ]),
@@ -135,7 +135,7 @@ def page_usage(c):
         ]),
         ("Hold LOWER + RAISE together", [
             "Bluetooth: BT 0-3 = pick device slot (Ctrl A S D keys).  BT clr (F key) forgets that slot.",
-            "Screens on/off = H key.  (If a screen stays blank after turning on, switch that half off and on.)",
+            "Screens off = H key, screens on = J key.  (If a screen stays black after J, switch that half off and on.)",
             "Boot (Z key on left half, / key on right half) = flashing mode for that half.",
         ]),
     ]

@@ -10,7 +10,7 @@
 //   Layer 0: BASE    — QWERTY, Cmd/Opt on left thumb like a MacBook
 //   Layer 1: LOWER   — F1-F12, arrows, media, brightness (hold LOWER)
 //   Layer 2: RAISE   — numbers and symbols (hold RAISE)
-//   Layer 3: ADJUST  — Bluetooth, screen on/off, bootloader (hold LOWER + RAISE together)
+//   Layer 3: ADJUST  — Bluetooth, screens off/on, bootloader (hold LOWER + RAISE together)
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
@@ -76,7 +76,7 @@
             display-name = "ADJUST";
             bindings = <
 &none         &none         &none         &none         &none       &none            &none           &none           &none           &none           &none    &none
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR  &none            &ext_power EP_TOG &none        &none           &none           &none    &none
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR  &none            &ext_power EP_OFF &ext_power EP_ON &none           &none           &none    &none
 &out OUT_TOG  &bootloader   &none         &none         &none       &none            &none           &none           &none           &none           &bootloader &none
                                           &kp LALT        &kp LGUI      &mo LOWER           &mo RAISE          &kp SPACE          &kp RET
             >;

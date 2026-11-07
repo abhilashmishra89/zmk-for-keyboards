@@ -19,7 +19,7 @@ The SVG updates automatically on push via the [Draw Keymap](.github/workflows/dr
 
 - **Left (central):** Built-in ZMK status screen (layer, battery, BT)
 - **Right (peripheral):** Custom P keycap logo with glitch effects + battery + BT status
-- **Screens on/off:** LOWER + RAISE + H. After turning back on, a screen may stay black until that half is switched off and on.
+- **Screens off / on:** LOWER + RAISE + H turns them off, + J turns them on. After turning back on, a screen may stay black until that half is switched off and on.
 
 ## Build Firmware
 

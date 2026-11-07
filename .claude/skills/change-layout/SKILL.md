@@ -36,7 +36,7 @@ Run `git pull --rebase` first: a bot pushes a redrawn picture after every keymap
 
 1. `config/corne.keymap`: the bindings, plus the layer summary comment at the top if a layer's purpose changes.
 2. `scripts/make_guide.py`: the `LAYERS` tables (page 2, key grids) and the `page_usage` text (page 1). Both must match the keymap. `scripts/make_print.py` (the one-page A4 print of BASE/RAISE/LOWER) reuses these tables, so it needs no edits.
-3. `keymap_drawer.config.yaml`: only if a new binding needs a friendlier label (e.g. `"&ext_power EP_TOG": Screen`).
+3. `keymap_drawer.config.yaml`: only if a new binding needs a friendlier label (e.g. `"&ext_power EP_ON": Scrn on`).
 4. `README.md`: the one-line layer summary near the top, if a layer's purpose changed.
 
 ## 3. Regenerate and check visually
@@ -92,4 +92,4 @@ Suggest a concrete test in a text box or at https://www.keyboardtester.com/teste
 - **Mac doesn't see the half at all:** the cable is probably charge-only, or it's going through a hub. Use a data cable straight into the Mac.
 - **Halves stop talking to each other:** flash `settings_reset-nice_nano__zmk-zmk.uf2` to both halves, then the normal firmware to both.
 - **§ instead of `:** macOS detected the board as ISO. Fix in Keyboard settings → Change Keyboard Type → ANSI.
-- **Screen stays black after the Screen key turns it back on:** power-cycle that half with its switch. This is expected with `&ext_power`.
+- **Screen stays black after Scrn on (LOWER+RAISE+J):** power-cycle that half with its switch. This is expected with `&ext_power`. The screen state is saved, so a restart alone won't bring back a screen that was switched off; press Scrn on first. Use separate EP_OFF/EP_ON keys, never EP_TOG: a toggle let the halves get out of sync.

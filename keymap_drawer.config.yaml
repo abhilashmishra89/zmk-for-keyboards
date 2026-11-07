@@ -4,7 +4,8 @@ parse_config:
     "&kp LALT": Opt
     "&kp LGUI": Cmd
     "&bootloader": Boot
-    "&ext_power EP_TOG": Screen
+    "&ext_power EP_OFF": Scrn off
+    "&ext_power EP_ON": Scrn on
     # show the Shift symbol on keys that have one
     "&kp SEMI": {t: ";", shifted: ":"}
     "&kp SQT": {t: "'", shifted: '"'}
